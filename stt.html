@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="p2">
+      
+              <h1>
+            stt by soumya
+        </h1>
+     <textarea id="stt" ></textarea>
+ <div class="ch">
+ <center>
+            <button onclick="voice()">
+               listen
+            </button>
+           <p>use <a href="index.html"> text to speech</a> </p></center>
+       </div>
+    </div> 
+    <script>
+function voice(){
+
+var recognition=new webkitSpeechRecognition();
+
+recognition.lang="en-GB";
+
+recognition.onresult=function(event){
+    console.log(event);
+    document.getElementById("stt").value=event.result[0][0].transcript;
+}
+recognition.start();
+}
+
+
+
+
+
+
+
+    </script> 
+</body>
+</html>
