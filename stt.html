@@ -3,44 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>STT by Soumya</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="p2">
-      
-              <h1>
-            stt by soumya
-        </h1>
-     <textarea id="stt" ></textarea>
- <div class="ch">
- <center>
-            <button onclick="voice()">
-               listen
-            </button>
-           <p>use <a href="index.html"> text to speech</a> </p></center>
-       </div>
+        <h1>STT by Soumya</h1>
+        <textarea id="stt" rows="10" cols="50" placeholder="Your speech will appear here..."></textarea>
+        <div class="ch">
+            <center>
+                <button onclick="voice()">Listen</button>
+                <p>Use <a href="index.html">text to speech</a></p>
+            </center>
+        </div>
     </div> 
+
     <script>
-function voice(){
+        function voice() {
+            // Check if SpeechRecognition is supported
+            if (!('webkitSpeechRecognition' in window)) {
+                alert("Your browser does not support Speech Recognition.");
+                return;
+            }
 
-var recognition=new webkitSpeechRecognition();
+            // Initialize SpeechRecognition
+            var recognition = new webkitSpeechRecognition();
 
-recognition.lang="en-GB";
+            // Set the language for recognition
+            recognition.lang = "en-GB";
 
-recognition.onresult=function(event){
-    console.log(event);
-    document.getElementById("stt").value=event.result[0][0].transcript;
-}
-recognition.start();
-}
+            // Handle recognition results
+            recognition.onresult = function(event) {
+                console.log(event);
+                document.getElementById("stt").value = event.results[0][0].transcript;
+            };
 
-
-
-
-
-
-
+            // Start recognition
+            recognition.start();
+        }
     </script> 
 </body>
 </html>
